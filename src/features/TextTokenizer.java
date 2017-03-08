@@ -3,6 +3,7 @@ package features;
 import dataobjects.Document;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 
@@ -42,8 +43,8 @@ public class TextTokenizer {
      * @return 
      */
     public static Map<String, Integer> getKeywordCounts(String[] keywordArray) {
-        Map<String, Integer> counts = new HashMap<>();
-        
+        Map<String, Integer> counts = new LinkedHashMap<>();
+
         Integer counter;
         for(int i=0;i<keywordArray.length;++i) {
             counter = counts.get(keywordArray[i]);
@@ -51,6 +52,7 @@ public class TextTokenizer {
                 counter=0;
             }
             counts.put(keywordArray[i], ++counter); //increase counter for the keyword
+//            System.out.println(counts.toString());
         }
         
         return counts;

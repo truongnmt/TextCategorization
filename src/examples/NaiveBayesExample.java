@@ -29,9 +29,9 @@ public class NaiveBayesExample {
     public static void main(String[] args) throws IOException {
         //map of dataset files
         Map<String, URL> trainingFiles = new HashMap<>();
-        trainingFiles.put("English", NaiveBayesExample.class.getResource("/datasets/training.language.en.txt"));
-        trainingFiles.put("French", NaiveBayesExample.class.getResource("/datasets/training.language.fr.txt"));
-        trainingFiles.put("German", NaiveBayesExample.class.getResource("/datasets/training.language.de.txt"));
+        trainingFiles.put("English", NaiveBayesExample.class.getResource("/datasets/training.language.en2.txt"));
+        trainingFiles.put("French", NaiveBayesExample.class.getResource("/datasets/training.language.fr2.txt"));
+        trainingFiles.put("German", NaiveBayesExample.class.getResource("/datasets/training.language.de2.txt"));
 
         //loading examples in memory
         Map<String, String[]> trainingExamples = new HashMap<>();
@@ -43,12 +43,12 @@ public class NaiveBayesExample {
         NaiveBayes nb = new NaiveBayes();
         nb.setChisquareCriticalValue(6.63); //0.01 pvalue
 
-        System.out.println("Feature:");
+        System.out.println("Raw:");
         for(Map.Entry<String, String[]> item : trainingExamples.entrySet()){
             System.out.println(item.getKey());
             System.out.println(Arrays.toString(item.getValue()));
-            System.out.println();
         }
+        System.out.println();
 
         nb.train(trainingExamples);
 

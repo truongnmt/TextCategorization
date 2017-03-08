@@ -135,11 +135,17 @@ public class NaiveBayes {
     public void train(Map<String, String[]> trainingDataset, Map<String, Double> categoryPriors) throws IllegalArgumentException {
         //preprocess the given dataset
         List<Document> dataset = preprocessDataset(trainingDataset);
+        System.out.println("After preprocess:");
+        for(Document item : dataset){
+            System.out.println(item.category + " " + item.tokens.toString());
+        }
 
 
         //produce the feature stats and select the best features
         FeatureStats featureStats =  selectFeatures(dataset);
-
+        System.out.println("No of observation: " + featureStats.n);
+        System.out.println("No of category count: " + featureStats.categoryCounts.toString());
+        System.out.println("No feature category joint count: " + featureStats.featureCategoryJointCount.toString());
 
         //intiliaze the knowledgeBase of the classifier
         knowledgeBase = new NaiveBayesKnowledgeBase();
